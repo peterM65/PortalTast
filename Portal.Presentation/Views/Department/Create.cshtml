@@ -1,0 +1,78 @@
+﻿@model DepartmentVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>General Form</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Department Card</a></li>
+                    <li class="breadcrumb-item active">Create New Department</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-xl-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Create New Department</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form asp-controller="Department" asp-action="Create" method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="Name">Department Name</label>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Enter Department Name ">
+                            <span asp-validation-for="Name" class="text-danger font-weight-bold"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Code">Department Code</label>
+                            <input type="text" asp-for="Code" class="form-control" placeholder="Enter Department Code">
+                            <span asp-validation-for="Code" class="text-danger font-weight-bold"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="card-footer">
+                        <center>
+                            <input type="submit" value="Save" class="btn btn-success" />
+                            <input type="reset" value="Cancle" class="btn btn-primary" />
+                        </center>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div><!-- /.container-fluid -->
+</div>
+@section InputScript{
+    <script src="~/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+}
+
+@section jqueryValidation
+        {
+    <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+}

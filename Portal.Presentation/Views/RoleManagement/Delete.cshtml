@@ -1,0 +1,77 @@
+﻿@model ApplicationRole
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Delete Form</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Delete</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<div class="container-fluid">
+
+    <a asp-controller="RoleManagement" asp-action="Index" class="btn btn-block bg-gradient-success" style="width: 100px;">Return</a>
+    <br /><br />
+    <div class="row">
+        <!-- left column -->
+        <div class="col-xl-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Delete @Model.Name Role Management</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form asp-controller="RoleManagement" asp-action="Delete" method="post">
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <input type="hidden" asp-for="ConcurrencyStamp" />
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="Name">Role Name</label>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Enter Employee Name " readonly>
+                        </div>
+
+
+
+                        <div class="card-footer">
+                            <center>
+                                <input type="submit" value="Delete" class="btn btn-block bg-gradient-danger" style="width: 100px;" />
+                                @*<input type="reset" value="Update" class="btn btn-block bg-gradient-success" style="width: 100px;"/>*@
+                            </center>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div><!-- /.container-fluid -->
+</div>
+
+@section InputScript
+        {
+    <script src="~/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+}
+

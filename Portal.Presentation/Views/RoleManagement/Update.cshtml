@@ -1,0 +1,84 @@
+﻿@model ApplicationRole
+
+
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+@section JqueryUIStyle{
+    <link href="~/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+}
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Role Management</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Role Card</a></li>
+                    <li class="breadcrumb-item active">Update</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-xl-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Update @Model.Name</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form asp-controller="RoleManagement" asp-action="Update" method="post">
+
+                        <div asp-validation-summary="All" class="text-danger font-weight-bold"></div>
+
+
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="ConcurrencyStamp" />
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Name">Role Name</label>
+                                <input type="text" asp-for="Name" class="form-control">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <center>
+                                <input type="submit" value="Update" class="btn btn-primary" />
+                            </center>
+                        </div>
+                    </form>
+
+
+                    <a asp-controller="RoleManagement" asp-action="AddOrRemoveUser" asp-route-RoleId="@Model.Id" class="btn btn-success">Add or remove users</a>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+
+
+@section JqueryValidation{
+    <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

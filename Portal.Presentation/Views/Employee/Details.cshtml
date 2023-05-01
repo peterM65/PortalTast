@@ -1,0 +1,105 @@
+﻿@model EmployeeVM
+@{
+    ViewData["Title"] = "Details";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Details Form</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Employee Card</a></li>
+                    <li class="breadcrumb-item active">Details</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<div class="container-fluid">
+
+    <a asp-controller="Employee" asp-action="Index" class="btn btn-success">Return</a>
+
+    <br /> <br />
+    <div class="row">
+        <!-- left column -->
+        <div class="col-xl-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Details For @Model.Name</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="text" asp-for="Id" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        Employee Is Active
+                        <input type="checkbox" asp-for="IsActive" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Name" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="DepartmentName" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="DepartmentCode" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Salary" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Email" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" asp-for="Notes" class="form-control" disabled></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-format="{0:dd/MM/yyyy}" asp-for="HireDate" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Address" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-format="{0:dd/MM/yyyy}" asp-for="CreatedOn" disabled>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <center>
+                        <a asp-controller="Employee" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+                        <a asp-controller="Employee" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section InputScript
+        {
+    <script src="~/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+}
+
+@section jqueryValidation
+        {
+    <script src="~/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+}
+

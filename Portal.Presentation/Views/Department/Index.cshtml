@@ -1,0 +1,79 @@
+﻿@model IEnumerable<DepartmentVM>
+
+@{
+    ViewBag.Title = "Department";
+}
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Department Card</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Departments</a></li>
+                    <li class="breadcrumb-item active">Department Card</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<div class="card">
+    <div class="card-header">
+
+
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 250px;">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- /.card-header -->
+    <div class="container-fluid ">
+        <b>
+            <a asp-controller="Department" asp-action="Create" class="btn btn-block bg-gradient-primary " style="width : 200px;">Create New Department</a>
+        </b>
+        <br />
+        <table class="table table-hover table-bordered table-striped text-center font-weight-bold">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Code</td>
+                        <td>
+                                <div class="btn-group">
+                                        <a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                                    <div class="dropdown-menu">
+                                            <a class="dropdown-item" asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                            <a class="dropdown-item" asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </div>
+                                </div>
+                            </td> 
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
